@@ -1,7 +1,6 @@
 #include "Vsth.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "../vbuddy.cpp"
 
 
 int main(int argc, char **argv, char **env){
@@ -18,17 +17,12 @@ int main(int argc, char **argv, char **env){
   top->trace(tfp, 99);
   tfp->open("sth.vcd");
 
-  if (vbdOpen("../vbuddy.cfg") != 1) return -1;
-  vbdHeader("T2-137F :)");
-  vbdSetMode(1);
-
   top->clk = 1;
-  top->en = 1;
+  top->rst = 1;
 
-  for (cyc = 0; cyc < 10000; cyc++){
-      if ((vbdValue() == 51) || (cyc < 2)) top->rst = 1;
+  for (cyc = 0; cyc < 1000; cyc++){
+      if (cyc < 2) top->rst = 1;
       else top->rst = 0;
-      top->en = vbdFlag();
 
       for (clock = 0; clock < 2; clock++){
           tfp->dump(2 * cyc + clock);
@@ -36,13 +30,9 @@ int main(int argc, char **argv, char **env){
           top->eval();
       }
 
-      vbdBar(top->data_out & 0xFF);
-      vbdCycle(cyc);
-
-      if ((Verilated::gotFinish()) || (vbdGetkey()=='x')) exit(0);
+      if (Verilated::gotFinish()) exit(0);
   }
 
   tfp->close();
-  vbdClose();
   exit(0);
 }
