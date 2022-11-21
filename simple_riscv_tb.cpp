@@ -1,6 +1,7 @@
 #include "Vsth.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
+#include <iostream>
 
 
 int main(int argc, char **argv, char **env){
@@ -29,6 +30,8 @@ int main(int argc, char **argv, char **env){
           top->clk = !top->clk;
           top->eval();
       }
+
+      printf("at cycle %d, a0 is %x", cyc, top->a0);
 
       if (Verilated::gotFinish()) exit(0);
   }
