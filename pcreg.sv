@@ -1,7 +1,7 @@
 module pcreg (
     input logic clk,
     input logic rst,
-    input logic [11:0] ImmOp,
+    input logic [31:0] ImmOp,
     input logic PCsrc,
 
     output logic [31:0] PC
