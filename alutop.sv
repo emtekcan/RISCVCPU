@@ -31,7 +31,7 @@ alu alulogic(
 
 src SelectSignal(
     .regOp2(regOp2),
-    .immOp(immOp),
+    .ImmOp(immOp),
     .ALUsrc(ALUsrc),
     .ALUop2(ALUop2)
 );
