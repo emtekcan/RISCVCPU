@@ -24,6 +24,7 @@ alu alulogic(
     .ALUop1(ALUop1),
     .ALUop2(ALUop2),
     .ALUout(ALUout),
+    .ALUctrl(ALUctrl),
     .EQ(EQ)
 
 );
