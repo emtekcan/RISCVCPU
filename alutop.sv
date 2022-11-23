@@ -13,8 +13,8 @@ module alutop#(
     input logic [ADDRESS_WIDTH-1:0] rs2,
     input logic [ADDRESS_WIDTH-1:0] rd,
     output logic [ADDRESS_WIDTH-1:0]a0,
-    output logic[DATA_WIDTH -1:0] ALUout
-
+    output logic[DATA_WIDTH -1:0] ALUout,
+    output logic EQ
 );
 logic[DATA_WIDTH-1:0] ALUop1;
 logic[DATA_WIDTH-1:0] regOp2;
@@ -44,7 +44,8 @@ sreg regfile(
     .WE3(RegWrite),
     .WD3(ALUout),
     .ALUop1(ALUop1),
-    .ALUop2(ALUop2)
+    .regOp2(regOp2),
+    .a0(a0),
 
 );
 
