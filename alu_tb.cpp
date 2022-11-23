@@ -91,7 +91,9 @@ int main(int argc, char **argv, char **env){
       }
 
       printf("for test %d, at cycle %d,\n
-      a0 is %x,\nALUout is %x,\nand eq is %d", 
+      a0 is %x,\n
+      ALUout is %x,\n
+      and eq is %d", 
       test, cyc, top->a0, top->ALUout, top->EQ);
 
       if (Verilated::gotFinish()) exit(0);
