@@ -14,7 +14,7 @@ always_comb //always comb //case add aluctrl
     case(ALUctrl)
     1'b0:ALUout = ALUop1+ALUop2;
      //need rs1 and rs2 to be the same.
-    1'b1:if(ALUop1 = ALUop2) EQ =1; //
+    1'b1:if(ALUop1 == ALUop2) EQ =1; //
     default: ALUout = 0; //what should default case
     endcase
 
