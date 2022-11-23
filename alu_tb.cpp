@@ -6,32 +6,36 @@
 
 
 int main(int argc, char **argv, char **env){
+  std::cout << std::endl;
+
   int cyc;
   int clock;
 
   /*
   test0:
-  0. load a value into a0
-  1. load a value into a1
-  2. t1 = a0 + a1
-  3. a0 = t1
-  4. check if a0 and t1 are equal
+  0. load 125 into a0
+  1. load 175 into a1
+  2. t1 = a0 + a1 = 300
+  3. a0 = t1 = 300
+  4. check if a0 and t1 are equal (they should be)
   expecting: a0 = t1 = 300, a1 = 185
 
   test1:
   0. load 14 into a1
-  1. see that a0 != 314
-  2. a0 = a0 + a1, with immop = 28
-  3. check that a0 == 314, with rd == t1
-  4. check that t1 still == 300
+  1. check if a0 == 314 (it shouldn't)
+  2. a0 = a0 + a1, (a0 = 314), with immop = 28 (shouldn't do anything)
+  3. check that a0 == 314 (should do), with rd == t1 (hope t1 isn't rewritten)
+  4. check that t1 still == 300 (should be)
   */
 
   //int 😂 = 5;
 
-  //{ad1, ad2, ad3}
-  std::vector<int[3]> addresses{
+  //{ad1(rs1), ad2(rs2), ad3(rd)}
+  std::vector<std::vector<int>> addresses {
     {0, 0, 10}, {0, 0, 11}, {10, 11, 6}, {6, 0, 10}, {10, 6, 0}, 
     {0, 0, 11}, {10, 0 , 0}, {10, 11, 10}, {10, 0, 6}, {6, 0, 0}};
+
+  for (std::vector<int> &vec : addresses) vec.shrink_to_fit();
   
   std::vector<bool> write_en{
     1, 1, 1, 1, 0, 
@@ -46,7 +50,7 @@ int main(int argc, char **argv, char **env){
     0, 1, 0, 1, 1};
   
   std::vector<int> imm_op{
-    125, 185, 0, 0, 0, 
+    125, 175, 0, 0, 0, 
     14, 314, 28, 314, 300};
 
   // ------------------ Verilator stuffs ---------------------
@@ -64,35 +68,35 @@ int main(int argc, char **argv, char **env){
   // ------------------ The test begins ---------------------
 
   top->clk = 1;
-  int aluout_val = 0;  // may need this, not sure
 
-  for (test = 0; test < 2; test++){
+  for (int test = 0; test < 2; test++){
+    printf("\n");
     for (cyc = 0; cyc < 5; cyc++){
-      cur_idx = 5*test + cyc;
-      top->ad1 = addresses[cur_idx][0];
-      top->ad2 = addresses[cur_idx][1];
-      top->ad3 = addresses[cur_idx][2];
+      int cur_idx = 5*test + cyc;
+      top->rs1 = addresses[cur_idx][0];
+      top->rs2 = addresses[cur_idx][1];
+      top->rd = addresses[cur_idx][2];
 
-      top->we3 = write_en[cur_idx];
-      top->wd3 = top->aluout;
+      top->RegWrite = write_en[cur_idx];
+      top->ALUout = top->ALUout;
       
-      top->immop = imm_op[cur_idx];
+      top->immOp = imm_op[cur_idx];
 
-      top->alusrc = alu_src[cur_idx];
-      top->aluctrl = alu_ctrl[cur_idx];
+      top->ALUsrc = alu_src[cur_idx];
+      top->ALUctrl = alu_ctrl[cur_idx];
 
 
       for (clock = 0; clock < 2; clock++){
-          tfp->dump(2 * cyc + clock);
+          tfp->dump(2 * cur_idx + clock);
           top->clk = !top->clk;
           top->eval();
-
-          aluout_val = top->aluout;  // not sure if this is necessary
       }
 
-      printf("for test %d, at cycle %d,\n
-      a0 is %x,\nALUout is %x,\nand eq is %d", 
-      test, cyc, top->a0, top->aluout, top->eq);
+      printf("for test %d, at cycle %d, "
+      "a0 is %d, "
+      "ALUout is %d, "
+      "and eq is %d \n", 
+      test, cyc, top->a0, top->ALUout, top->EQ);
 
       if (Verilated::gotFinish()) exit(0);
     }
