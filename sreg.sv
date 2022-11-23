@@ -10,7 +10,7 @@ module sreg#(
     input logic [DATA_WIDTH-1:0] WD3,
     output logic[DATA_WIDTH-1:0] ALUop1,
     output logic[DATA_WIDTH-1:0] regOp2,
-    output logic [ADDRESS_WIDTH-1:0]a0
+    output logic [DATA_WIDTH-1:0]a0
 );
 
 //TEMPORARY REFERNEC ETABLE
@@ -31,7 +31,7 @@ always_comb
     begin
     ALUop1=rom_array[ad1];
     regOp2=rom_array[ad2];
-    a0=rom_array[5'b00101]; // this is rom_array 10: //A0 is register 10: abi name, risc v abi: application binary interfcae
+    a0=rom_array[5'b01010]; // this is rom_array 10: //A0 is register 10: abi name, risc v abi: application binary interfcae
     end
 endmodule
 
