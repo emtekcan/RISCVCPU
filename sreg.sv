@@ -34,3 +34,6 @@ always_comb
     a0<rom_array[5'b00101]; // this is rom_array 10: //A0 is register 10: abi name, risc v abi: application binary interfcae
     end
 endmodule
+
+
+
