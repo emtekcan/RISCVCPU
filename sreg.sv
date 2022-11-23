@@ -5,7 +5,7 @@ module sreg#(
     input logic clk,
     input logic[ADDRESS_WIDTH-1:0] ad1,
     input logic[ADDRESS_WIDTH-1:0] ad2,
-    input logic [ADDRESS_WDITH-1:0]ad3,
+    input logic [ADDRESS_WIDTH-1:0]ad3,
     input logic WE3,
     input logic [DATA_WIDTH-1:0] WD3,
     output logic[DATA_WIDTH-1:0] ALUop1,
