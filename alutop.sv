@@ -12,7 +12,7 @@ module alutop#(
     input logic [ADDRESS_WIDTH-1:0] rs1,
     input logic [ADDRESS_WIDTH-1:0] rs2,
     input logic [ADDRESS_WIDTH-1:0] rd,
-    output logic [DATA_WIDTH_WIDTH-1:0]a0,
+    output logic [DATA_WIDTH-1:0]a0,
     output logic[DATA_WIDTH -1:0] ALUout,
     output logic EQ
 );
