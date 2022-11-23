@@ -69,17 +69,17 @@ int main(int argc, char **argv, char **env){
   for (test = 0; test < 2; test++){
     for (cyc = 0; cyc < 5; cyc++){
       cur_idx = 5*test + cyc;
-      top->ad1 = addresses[cur_idx][0];
-      top->ad2 = addresses[cur_idx][1];
-      top->ad3 = addresses[cur_idx][2];
+      top->rs1 = addresses[cur_idx][0];
+      top->rs2 = addresses[cur_idx][1];
+      top->rd = addresses[cur_idx][2];
 
-      top->we3 = write_en[cur_idx];
-      top->wd3 = top->aluout;
+      top->RegWrite = write_en[cur_idx];
+      top->ALUout = top->aluout;
       
-      top->immop = imm_op[cur_idx];
+      top->immOp = imm_op[cur_idx];
 
-      top->alusrc = alu_src[cur_idx];
-      top->aluctrl = alu_ctrl[cur_idx];
+      top->ALUsrc = alu_src[cur_idx];
+      top->ALUctrl = alu_ctrl[cur_idx];
 
 
       for (clock = 0; clock < 2; clock++){
@@ -92,7 +92,7 @@ int main(int argc, char **argv, char **env){
 
       printf("for test %d, at cycle %d,\n
       a0 is %x,\nALUout is %x,\nand eq is %d", 
-      test, cyc, top->a0, top->aluout, top->eq);
+      test, cyc, top->a0, top->ALUout, top->EQ);
 
       if (Verilated::gotFinish()) exit(0);
     }
