@@ -45,7 +45,7 @@ sreg regfile(
     .WD3(ALUout),
     .ALUop1(ALUop1),
     .regOp2(regOp2),
-    .a0(a0),
+    .a0(a0)
 
 );
 
