@@ -31,7 +31,7 @@ always_comb
     begin
     ALUop1=rom_array[ad1];
     regOp2=rom_array[ad2];
-    a0<rom_array[5'b00101]; // this is rom_array 10: //A0 is register 10: abi name, risc v abi: application binary interfcae
+    a0=rom_array[5'b00101]; // this is rom_array 10: //A0 is register 10: abi name, risc v abi: application binary interfcae
     end
 endmodule
 
