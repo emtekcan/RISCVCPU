@@ -6,7 +6,7 @@ module alutop#(
     input logic clk,
     input logic RegWrite,
     input logic ALUsrc,
-    input logic ALUctrl,
+    input logic[2:0] ALUctrl,
     input logic[DATA_WIDTH-1:0] immOp,
     
     input logic [ADDRESS_WIDTH-1:0] rs1,
