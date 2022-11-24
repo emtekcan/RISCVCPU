@@ -31,20 +31,17 @@ VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vl
     // Body
     vlSelf->a0 = vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
         [0xaU];
-    vlSelf->simplecpu__DOT__alu__DOT__ALUop1 = vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
-        [vlSelf->simplecpu__DOT__rs1];
     vlSelf->simplecpu__DOT__cu__DOT__RD_instr = vlSelf->simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array
         [(0x3fU & vlSelf->simplecpu__DOT__PC)];
+    vlSelf->simplecpu__DOT__alu__DOT__ALUop1 = vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
+        [(0x1fU & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
+                   >> 0xfU))];
     vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl 
         = ((0x13U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
             ? 0x90U : ((0x63U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
                         ? ((1U == (7U & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                          >> 0xcU)))
                             ? 0x43U : 0x41U) : 0U));
-    if ((1U & (~ ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
-                  >> 1U)))) {
-        vlSelf->simplecpu__DOT__EQ = 0U;
-    }
     vlSelf->simplecpu__DOT__ImmOp = ((0U == (3U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                                                    >> 5U)))
                                       ? (((- (IData)(
@@ -70,6 +67,30 @@ VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vl
                                                       & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                                          >> 7U)))))
                                           : 0U));
+    vlSelf->simplecpu__DOT__alu__DOT__ALUop2 = ((0x10U 
+                                                 & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))
+                                                 ? vlSelf->simplecpu__DOT__ImmOp
+                                                 : 
+                                                vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
+                                                [(0x1fU 
+                                                  & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
+                                                     >> 0x14U))]);
+    if ((0U == (7U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
+                      >> 1U)))) {
+        vlSelf->ALUout = (vlSelf->simplecpu__DOT__alu__DOT__ALUop1 
+                          + vlSelf->simplecpu__DOT__alu__DOT__ALUop2);
+        vlSelf->simplecpu__DOT__EQ = 0U;
+    } else {
+        if ((1U != (7U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
+                          >> 1U)))) {
+            vlSelf->ALUout = 0U;
+        }
+        if ((1U == (7U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
+                          >> 1U)))) {
+            vlSelf->simplecpu__DOT__EQ = (vlSelf->simplecpu__DOT__alu__DOT__ALUop1 
+                                          == vlSelf->simplecpu__DOT__alu__DOT__ALUop2);
+        }
+    }
     vlSelf->simplecpu__DOT__pc__DOT__next_PC = ((1U 
                                                  & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                                                     & (~ (IData)(vlSelf->simplecpu__DOT__EQ))))
@@ -79,12 +100,6 @@ VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vl
                                                  : 
                                                 ((IData)(4U) 
                                                  + vlSelf->simplecpu__DOT__PC));
-    vlSelf->simplecpu__DOT__alu__DOT__ALUop2 = ((0x10U 
-                                                 & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))
-                                                 ? vlSelf->simplecpu__DOT__ImmOp
-                                                 : 
-                                                vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
-                                                [vlSelf->simplecpu__DOT__rs2]);
 }
 
 VL_ATTR_COLD void Vsimplecpu___024root___eval_initial(Vsimplecpu___024root* vlSelf) {
@@ -122,14 +137,10 @@ VL_ATTR_COLD void Vsimplecpu___024root___ctor_var_reset(Vsimplecpu___024root* vl
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->a0 = VL_RAND_RESET_I(32);
+    vlSelf->ALUout = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__ImmOp = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__PC = VL_RAND_RESET_I(32);
-    vlSelf->simplecpu__DOT__A = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__EQ = VL_RAND_RESET_I(1);
-    vlSelf->simplecpu__DOT__rs1 = VL_RAND_RESET_I(5);
-    vlSelf->simplecpu__DOT__rs2 = VL_RAND_RESET_I(5);
-    vlSelf->simplecpu__DOT__rd = VL_RAND_RESET_I(5);
-    vlSelf->simplecpu__DOT__ImmSrc = VL_RAND_RESET_I(1);
     vlSelf->simplecpu__DOT__pc__DOT__next_PC = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__cu__DOT__RD_instr = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl = VL_RAND_RESET_I(8);
