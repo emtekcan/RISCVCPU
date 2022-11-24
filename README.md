@@ -1,1 +1,2 @@
-# RISCVCPU
+# RISCV CPU
+[Group Logbook](log.md)
