@@ -30,7 +30,7 @@ ctrlu controlunit(
 extend signextend(
 .ImmSrc(ImmSrc),
 .ImmOp(ImmOp),
-.RD(RD_instr)
+.RD(RD_instr[31:7])
 );
 
 rom instructionmemory(
