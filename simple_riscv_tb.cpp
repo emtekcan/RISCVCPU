@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **env){
   top->clk = 1;
   top->rst = 1;
 
-  for (cyc = 0; cyc < 100; cyc++){
+  for (cyc = 0; cyc < 10000; cyc++){
       if (cyc < 2) top->rst = 1;
       else top->rst = 0;
 
