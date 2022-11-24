@@ -6,7 +6,7 @@ module rom(
 logic [31:0] rom_array [63:0];
 
 initial begin
-    $readmemh("test.mem", rom_array);
+    $readmemh("InstructionMemory.mem", rom_array);
 end;
 
 assign RD = rom_array [A];

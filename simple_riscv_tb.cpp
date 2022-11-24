@@ -19,11 +19,9 @@ int main(int argc, char **argv, char **env){
   tfp->open("simplecpu.vcd");
 
   top->clk = 1;
-  top->rst = 1;
+  top->rst = 0;
 
-  for (cyc = 0; cyc < 10000; cyc++){
-      if (cyc < 2) top->rst = 1;
-      else top->rst = 0;
+  for (cyc = 0; cyc < 1000; cyc++){
 
       for (clock = 0; clock < 2; clock++){
           tfp->dump(2 * cyc + clock);
