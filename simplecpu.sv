@@ -21,6 +21,7 @@ logic [ADDRESS_WIDTH-1:0] rs2;
 logic [ADDRESS_WIDTH-1:0] rd;
 logic ImmSrc;
 logic [DATA_WIDTH-1:0] ALUout,
+logic RD_instr
 
 
 
@@ -37,9 +38,7 @@ controltop CU(
     .EQ(EQ), //after dot is the internal signal and in the brackets external
     .ALUctrl(ALUctrl),
     .ALUsrc(ALUsrc),
-    .ImmSrc(ImmSrc),
     .PCsrc(PCsrc),
-    .funct3(RD_instr[14:12]),
     .RegWrite(RegWrite),
     .A(PC),
     .rs1(rs1),
