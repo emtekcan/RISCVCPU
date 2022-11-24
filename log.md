@@ -46,3 +46,16 @@ We then made a top level unit for the alu.
 
 
 ## Testbench
+
+### Program to execute
+````
+main: 
+    addi t1,zero,0xFF
+    addi a0,zero,0x0
+mloop: 
+    addi a1,zero,0x0
+iloop:
+    addi a0,a1,0
+    addi a1,a1,0
+    bne a1,t1,iloop
+    beq t1,zero,mloop
