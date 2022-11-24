@@ -19,9 +19,9 @@ VL_ATTR_COLD void Vsimplecpu___024root___initial__TOP__0(Vsimplecpu___024root* v
     __Vtemp_h223e20d9__0[3U] = 0x75637469U;
     __Vtemp_h223e20d9__0[4U] = 0x6e737472U;
     __Vtemp_h223e20d9__0[5U] = 0x49U;
-    VL_READMEM_N(true, 32, 2, 4294967295, VL_CVT_PACK_STR_NW(6, __Vtemp_h223e20d9__0)
+    VL_READMEM_N(true, 32, 64, 0, VL_CVT_PACK_STR_NW(6, __Vtemp_h223e20d9__0)
                  ,  &(vlSelf->simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array)
-                 , 4294967295, ~0ULL);
+                 , 0, ~0ULL);
 }
 
 VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vlSelf) {
@@ -34,7 +34,7 @@ VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vl
     vlSelf->simplecpu__DOT__alu__DOT__ALUop1 = vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
         [vlSelf->simplecpu__DOT__rs1];
     vlSelf->simplecpu__DOT__cu__DOT__RD_instr = vlSelf->simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array
-        [(1U & ((IData)(1U) + vlSelf->simplecpu__DOT__PC))];
+        [(0x3fU & vlSelf->simplecpu__DOT__PC)];
     vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl 
         = ((0x13U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
             ? 0x90U : ((0x63U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
@@ -93,9 +93,6 @@ VL_ATTR_COLD void Vsimplecpu___024root___eval_initial(Vsimplecpu___024root* vlSe
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsimplecpu___024root___eval_initial\n"); );
     // Body
     Vsimplecpu___024root___initial__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
-    vlSelf->__Vm_traceActivity[1U] = 1U;
-    vlSelf->__Vm_traceActivity[0U] = 1U;
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
     vlSelf->__Vclklast__TOP__rst = vlSelf->rst;
 }
@@ -136,7 +133,7 @@ VL_ATTR_COLD void Vsimplecpu___024root___ctor_var_reset(Vsimplecpu___024root* vl
     vlSelf->simplecpu__DOT__pc__DOT__next_PC = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__cu__DOT__RD_instr = VL_RAND_RESET_I(32);
     vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl = VL_RAND_RESET_I(8);
-    for (int __Vi0=0; __Vi0<2; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<64; ++__Vi0) {
         vlSelf->simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array[__Vi0] = VL_RAND_RESET_I(32);
     }
     vlSelf->simplecpu__DOT__alu__DOT__ALUop1 = VL_RAND_RESET_I(32);

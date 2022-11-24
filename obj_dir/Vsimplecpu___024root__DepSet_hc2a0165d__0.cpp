@@ -43,7 +43,7 @@ VL_INLINE_OPT void Vsimplecpu___024root___sequent__TOP__1(Vsimplecpu___024root* 
     vlSelf->simplecpu__DOT__PC = ((IData)(vlSelf->rst)
                                    ? 0U : vlSelf->simplecpu__DOT__pc__DOT__next_PC);
     vlSelf->simplecpu__DOT__cu__DOT__RD_instr = vlSelf->simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array
-        [(1U & ((IData)(1U) + vlSelf->simplecpu__DOT__PC))];
+        [(0x3fU & vlSelf->simplecpu__DOT__PC)];
     vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl 
         = ((0x13U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
             ? 0x90U : ((0x63U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))

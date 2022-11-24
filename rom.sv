@@ -4,7 +4,7 @@ module rom(
     output logic [31:0] RD
 );
 
-logic [31:0] rom_array [(2**32)-1:0];
+logic [31:0] rom_array [63:0];
 
 initial begin
     $readmemh("InstructionMemory.mem", rom_array);
