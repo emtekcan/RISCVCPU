@@ -16,17 +16,13 @@ class Vsimplecpu___024root final : public VerilatedModule {
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
     CData/*0:0*/ simplecpu__DOT__EQ;
-    CData/*4:0*/ simplecpu__DOT__rs1;
-    CData/*4:0*/ simplecpu__DOT__rs2;
-    CData/*4:0*/ simplecpu__DOT__rd;
-    CData/*0:0*/ simplecpu__DOT__ImmSrc;
     CData/*7:0*/ simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl;
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP__rst;
     VL_OUT(a0,31,0);
+    VL_OUT(ALUout,31,0);
     IData/*31:0*/ simplecpu__DOT__ImmOp;
     IData/*31:0*/ simplecpu__DOT__PC;
-    IData/*31:0*/ simplecpu__DOT__A;
     IData/*31:0*/ simplecpu__DOT__pc__DOT__next_PC;
     IData/*31:0*/ simplecpu__DOT__cu__DOT__RD_instr;
     IData/*31:0*/ simplecpu__DOT__alu__DOT__ALUop1;

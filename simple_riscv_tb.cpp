@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **env){
   top->clk = 1;
   top->rst = 1;
 
-  for (cyc = 0; cyc < 1000; cyc++){
+  for (cyc = 0; cyc < 100; cyc++){
       if (cyc < 2) top->rst = 1;
       else top->rst = 0;
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv, char **env){
           top->eval();
       }
 
-      printf("at cycle %d, a0 is %d", cyc, top->a0);
+      printf("at cycle %d, a0 is %d \n", cyc, top->a0);
 
       if (Verilated::gotFinish()) exit(0);
   }

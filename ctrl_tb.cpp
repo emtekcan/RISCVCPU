@@ -1,4 +1,4 @@
-#include "Vctrltop.h"
+#include "Vcontroltop.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include <iostream>
@@ -41,13 +41,13 @@ int main(int argc, char **argv, char **env){
 
   Verilated::commandArgs(argc, argv);
 
-  Vctrltop *top = new Vctrltop;
+  Vcontroltop *top = new Vcontroltop;
 
   Verilated::traceEverOn(true);
   VerilatedVcdC *tfp = new VerilatedVcdC;
 
   top->trace(tfp, 99);
-  tfp->open("ctrltop.vcd");
+  tfp->open("controltop.vcd");
 
   // ------------------ The test begins ---------------------
 
@@ -68,11 +68,10 @@ int main(int argc, char **argv, char **env){
     "RegWrite is %d, "
     "ALUctrl is %d, "
     "ALUsrc is %d, "
-    "ImmSrc is %d, "
     "PCsrc is %d, "
     "ImmOp is %x \n",
-    cyc, top->RegWrite, top->ALUctrl, top->ALUsrc, 
-    top->ImmSrc, top->PCsrc, top->ImmOp);
+    cyc, top->RegWrite, top->ALUctrl, 
+    top->ALUsrc, top->PCsrc, top->ImmOp);
 
     if (Verilated::gotFinish()) exit(0);
   }

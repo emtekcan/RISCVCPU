@@ -9,6 +9,7 @@ module ctrlu(
     output logic [1:0] ImmSrc,
     output logic PCsrc
 );
+
 logic branch;
 logic [7:0] ctrl;
 assign {RegWrite, ImmSrc, ALUsrc, ALUctrl, branch} = ctrl;

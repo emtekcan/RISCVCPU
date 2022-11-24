@@ -1,6 +1,6 @@
 module extend(
     input logic[1:0] ImmSrc,
-    input logic[31:7] Instr,
+    input logic[31:0] Instr,
     output logic[31:0] ImmOp
 );
 

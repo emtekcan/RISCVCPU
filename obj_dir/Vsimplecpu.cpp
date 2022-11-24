@@ -14,6 +14,7 @@ Vsimplecpu::Vsimplecpu(VerilatedContext* _vcontextp__, const char* _vcname__)
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
     , a0{vlSymsp->TOP.a0}
+    , ALUout{vlSymsp->TOP.ALUout}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context

@@ -18,7 +18,7 @@ always_comb //always comb //case add aluctrl
     end
 
      //need rs1 and rs2 to be the same.
-    3'b111:EQ=(ALUop1 == ALUop2) ; //
+    3'b001:EQ=(ALUop1 == ALUop2) ; //
     default: ALUout = 0; //what should default case
     endcase
 
