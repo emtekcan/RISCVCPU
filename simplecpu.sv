@@ -20,12 +20,11 @@ logic [ADDRESS_WIDTH-1:0] rs1;
 logic [ADDRESS_WIDTH-1:0] rs2;
 logic [ADDRESS_WIDTH-1:0] rd;
 logic ImmSrc;
-logic [DATA_WIDTH-1:0] ALUout,
-logic RD_instr
+logic [DATA_WIDTH-1:0] ALUout;
 
 
 
-pcreg PC(
+pcreg pc(
     .clk(clk),
     .rst(rst),
     .ImmOp(ImmOp),
@@ -33,7 +32,7 @@ pcreg PC(
     .PC(PC)
 );
 
-controltop CU(
+controltop cu(
     .clk(clk),
     .EQ(EQ), //after dot is the internal signal and in the brackets external
     .ALUctrl(ALUctrl),
@@ -43,12 +42,13 @@ controltop CU(
     .A(PC),
     .rs1(rs1),
     .rs2(rs2),
-    .rd(rd)
+    .rd(rd),
+    .ImmOp(ImmOp)
 );
 
-alutop ALU(
+alutop alu(
     .clk(clk),
-    .immOP(ImmOp),
+    .immOp(ImmOp),
     .a0(a0),
     .ALUout(ALUout),
     .RegWrite(RegWrite),

@@ -8,14 +8,13 @@ input logic EQ,
 output logic RegWrite,
 output logic ALUctrl,
 output logic ALUsrc,
-output logic ImmSrc,
 output logic PCsrc,
 output logic [ADDRESS_WIDTH-1:0] rs1,
 output logic [ADDRESS_WIDTH-1:0] rs2,
 output logic [ADDRESS_WIDTH-1:0] rd,
 output logic [DATA_WIDTH-1:0] ImmOp
-
 );
+
 logic [DATA_WIDTH-1:0] RD_instr;
 logic [1:0]ImmSrc;
 
@@ -25,6 +24,7 @@ ctrlu controlunit(
 .ALUsrc(ALUsrc),
 .ImmSrc(ImmSrc),
 .PCsrc(PCsrc),
+.op(RD_instr[6:0]),
 .funct3(RD_instr[14:12]),
 .RegWrite(RegWrite)
 );
@@ -32,7 +32,7 @@ ctrlu controlunit(
 extend signextend(
 .ImmSrc(ImmSrc),
 .ImmOp(ImmOp),
-.RD(RD_instr[31:7])
+.Instr(RD_instr[31:7])
 );
 
 rom instructionmemory(

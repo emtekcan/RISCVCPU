@@ -1,4 +1,4 @@
-#include "Vsth.h"
+#include "Vsimplecpu.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include <iostream>
@@ -10,13 +10,13 @@ int main(int argc, char **argv, char **env){
 
   Verilated::commandArgs(argc, argv);
 
-  Vsth *top = new Vsth;
+  Vsimplecpu *top = new Vsimplecpu;
 
   Verilated::traceEverOn(true);
   VerilatedVcdC *tfp = new VerilatedVcdC;
 
   top->trace(tfp, 99);
-  tfp->open("sth.vcd");
+  tfp->open("simplecpu.vcd");
 
   top->clk = 1;
   top->rst = 1;
