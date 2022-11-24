@@ -5,6 +5,7 @@ module controltop#(
 input logic clk,
 input [DATA_WIDTH-1:0] A,
 input logic EQ,
+
 output logic RegWrite,
 output logic ALUctrl,
 output logic ALUsrc,
@@ -20,24 +21,27 @@ logic [1:0]ImmSrc;
 
 ctrlu controlunit(
 .EQ(EQ), //after dot is the internal signal and in the brackets external
+.op(RD_instr[6:0]),
+.funct3(RD_instr[14:12]),
+
 .ALUctrl(ALUctrl),
 .ALUsrc(ALUsrc),
 .ImmSrc(ImmSrc),
 .PCsrc(PCsrc),
-.op(RD_instr[6:0]),
-.funct3(RD_instr[14:12]),
 .RegWrite(RegWrite)
 );
 
 extend signextend(
 .ImmSrc(ImmSrc),
-.ImmOp(ImmOp),
-.Instr(RD_instr[31:7])
+.Instr(RD_instr[31:7]),
+
+.ImmOp(ImmOp)
 );
 
 rom instructionmemory(
 .clk(clk),
 .A(A),
+
 .RD(RD_instr)
 );
 

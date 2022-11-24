@@ -21,9 +21,10 @@ int main(int argc, char **argv, char **env){
   7. resets to 0
   8. nop
   */
-  //                     0  1   2   3     4   5   6   7   8
-  const bool resets[9]  {0, 0,  0,  0,    0,  0,  0,  1,  0};
-  const bool pcsrc[9]   {0, 0,  0,  1,    0,  0,  0,  0,  0};
+
+  //                     0  1   2   3     4   5    6   7   8
+  const bool resets[9]  {0, 0,  0,  0,    0,  0,   0,  1,  0};
+  const bool pcsrc[9]   {0, 0,  0,  1,    0,  0,   0,  0,  0};
   const int immop[9]    {0, 0,  0,  214,  0,  -8,  3,  0,  0};
 
   // ------------------ Verilator stuffs ---------------------
