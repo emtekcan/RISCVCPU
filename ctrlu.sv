@@ -11,7 +11,7 @@ module ctrlu(
 );
 logic branch;
 logic [7:0] ctrl;
-assign {Regwrite, ImmSrc, ALUsrc, ALUctrl, branch} = ctrl;
+assign {RegWrite, ImmSrc, ALUsrc, ALUctrl, branch} = ctrl;
 assign PCsrc = branch & (~EQ); //branch if not equals
 
 always_comb begin

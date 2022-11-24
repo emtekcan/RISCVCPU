@@ -8,7 +8,7 @@ input logic EQ,
 output logic RegWrite,
 output logic ALUctrl,
 output logic ALUsrc,
-//output logic ImmSrc,
+output logic ImmSrc,
 output logic PCsrc,
 output logic [ADDRESS_WIDTH-1:0] rs1,
 output logic [ADDRESS_WIDTH-1:0] rs2,
@@ -24,7 +24,9 @@ ctrlu controlunit(
 .ALUctrl(ALUctrl),
 .ALUsrc(ALUsrc),
 .ImmSrc(ImmSrc),
-.PCsrc(PCsrc)
+.PCsrc(PCsrc),
+.funct3(RD_instr[14:12]),
+.RegWrite(RegWrite)
 );
 
 extend signextend(
