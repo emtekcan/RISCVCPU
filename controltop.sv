@@ -2,12 +2,11 @@ module controltop#(
     parameter ADDRESS_WIDTH=5,
               DATA_WIDTH=32
 )(
-input logic clk,
 input [DATA_WIDTH-1:0] A,
 input logic EQ,
 
 output logic RegWrite,
-output logic ALUctrl,
+output logic [2:0] ALUctrl,
 output logic ALUsrc,
 output logic PCsrc,
 output logic [ADDRESS_WIDTH-1:0] rs1,
@@ -17,7 +16,11 @@ output logic [DATA_WIDTH-1:0] ImmOp
 );
 
 logic [DATA_WIDTH-1:0] RD_instr;
-logic [1:0]ImmSrc;
+logic [1:0] ImmSrc;
+
+assign rs1 = RD_instr[19:15];
+assign rs2 = RD_instr[24:20];
+assign rd = RD_instr[11:7];
 
 ctrlu controlunit(
 .EQ(EQ), //after dot is the internal signal and in the brackets external
@@ -33,13 +36,11 @@ ctrlu controlunit(
 
 extend signextend(
 .ImmSrc(ImmSrc),
-.Instr(RD_instr[31:7]),
-
-.ImmOp(ImmOp)
+.ImmOp(ImmOp),
+.Instr(RD_instr[31:0])
 );
 
 rom instructionmemory(
-.clk(clk),
 .A(A),
 
 .RD(RD_instr)
