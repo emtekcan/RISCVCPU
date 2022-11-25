@@ -1,0 +1,9 @@
+
+vbuddy.cpp
+*.cfg
+*.vcd
+Lab4手册.md
+run.sh
+ctrl_unit.sv
+obj_dir/
+README.md
