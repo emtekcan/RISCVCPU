@@ -42,13 +42,20 @@ sreg regfile(
     .ad2(rs2),
     .ad3(rd),
     .WE3(RegWrite),
-    .WD3(ALUout),
+    //.WD3(ALUout),
     .ALUop1(ALUop1),
     .regOp2(regOp2),
     .a0(a0)
 
 );
 
+datamemory datamem(
+    .clk(clk), //after dot is internal signal, inside brackets external signal
+    .A(ALUout),
+    .RD(WD3)
+
+
+);
 
 endmodule
 
