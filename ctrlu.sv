@@ -27,6 +27,11 @@ always_comb begin
                 3'b001: ctrl = 8'b01000011;
                 default: ctrl = 8'b0100xxx1;
             endcase
+        7'b0000011: //lw
+            case(funct3)
+                3'b010: ctrl = 8'b10010000;
+                default: ctrl = 8'b1001xxx0;
+            endcase
 
         default: ctrl = 8'bxxxxxxxx;
     endcase
