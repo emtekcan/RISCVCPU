@@ -41,7 +41,12 @@ VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vl
             ? 0x90U : ((0x63U == (0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
                         ? ((1U == (7U & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                          >> 0xcU)))
-                            ? 0x43U : 0x41U) : 0U));
+                            ? 0x43U : 0x41U) : ((3U 
+                                                 == 
+                                                 (0x7fU 
+                                                  & vlSelf->simplecpu__DOT__cu__DOT__RD_instr))
+                                                 ? 0x90U
+                                                 : 0U)));
     vlSelf->simplecpu__DOT__ImmOp = ((0U == (3U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                                                    >> 5U)))
                                       ? (((- (IData)(
@@ -69,12 +74,12 @@ VL_ATTR_COLD void Vsimplecpu___024root___settle__TOP__0(Vsimplecpu___024root* vl
                                           : 0U));
     vlSelf->simplecpu__DOT__alu__DOT__ALUop2 = ((0x10U 
                                                  & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))
-                                                 ? vlSelf->simplecpu__DOT__ImmOp
-                                                 : 
+                                                 ? 
                                                 vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
                                                 [(0x1fU 
                                                   & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
-                                                     >> 0x14U))]);
+                                                     >> 0x14U))]
+                                                 : vlSelf->simplecpu__DOT__ImmOp);
     if ((0U == (7U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                       >> 1U)))) {
         vlSelf->ALUout = (vlSelf->simplecpu__DOT__alu__DOT__ALUop1 
