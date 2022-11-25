@@ -133,12 +133,12 @@ VL_INLINE_OPT void Vsimplecpu___024root___sequent__TOP__2(Vsimplecpu___024root* 
                                           : 0U));
     vlSelf->simplecpu__DOT__alu__DOT__ALUop2 = ((0x10U 
                                                  & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))
-                                                 ? vlSelf->simplecpu__DOT__ImmOp
-                                                 : 
+                                                 ? 
                                                 vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
                                                 [(0x1fU 
                                                   & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
-                                                     >> 0x14U))]);
+                                                     >> 0x14U))]
+                                                 : vlSelf->simplecpu__DOT__ImmOp);
     if ((0U == (7U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                       >> 1U)))) {
         vlSelf->ALUout = (vlSelf->simplecpu__DOT__alu__DOT__ALUop1 
