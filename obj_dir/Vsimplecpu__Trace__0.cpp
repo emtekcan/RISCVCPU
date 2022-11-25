@@ -63,7 +63,7 @@ void Vsimplecpu___024root__trace_chg_sub_0(Vsimplecpu___024root* vlSelf, Verilat
                                      & (~ (IData)(vlSelf->simplecpu__DOT__EQ))))));
         bufp->chgBit(oldp+34,(vlSelf->simplecpu__DOT__EQ));
         bufp->chgBit(oldp+35,((1U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
-                                     >> 7U))));
+                                     >> 8U))));
         bufp->chgCData(oldp+36,((7U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                                        >> 1U))),3);
         bufp->chgBit(oldp+37,((1U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
@@ -74,32 +74,108 @@ void Vsimplecpu___024root__trace_chg_sub_0(Vsimplecpu___024root* vlSelf, Verilat
                                           >> 0x14U))),5);
         bufp->chgCData(oldp+40,((0x1fU & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                           >> 7U))),5);
-        bufp->chgIData(oldp+41,(vlSelf->simplecpu__DOT__alu__DOT__ALUop1),32);
-        bufp->chgIData(oldp+42,(vlSelf->simplecpu__DOT__alu__DOT__ALUop2),32);
-        bufp->chgIData(oldp+43,(vlSelf->simplecpu__DOT__cu__DOT__RD_instr),32);
-        bufp->chgCData(oldp+44,((3U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
-                                       >> 5U))),2);
-        bufp->chgCData(oldp+45,((0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr)),7);
-        bufp->chgCData(oldp+46,((7U & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
+        bufp->chgBit(oldp+41,((1U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
+                                     >> 5U))));
+        bufp->chgIData(oldp+42,(vlSelf->simplecpu__DOT__alu__DOT__ALUop1),32);
+        bufp->chgIData(oldp+43,(vlSelf->simplecpu__DOT__alu__DOT__ALUop2),32);
+        bufp->chgIData(oldp+44,(vlSelf->simplecpu__DOT__cu__DOT__RD_instr),32);
+        bufp->chgCData(oldp+45,((3U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
+                                       >> 6U))),2);
+        bufp->chgCData(oldp+46,((0x7fU & vlSelf->simplecpu__DOT__cu__DOT__RD_instr)),7);
+        bufp->chgCData(oldp+47,((7U & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                        >> 0xcU))),3);
-        bufp->chgBit(oldp+47,((1U & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))));
-        bufp->chgCData(oldp+48,(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl),8);
+        bufp->chgBit(oldp+48,((1U & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))));
+        bufp->chgSData(oldp+49,(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl),9);
     }
-    bufp->chgBit(oldp+49,(vlSelf->clk));
-    bufp->chgBit(oldp+50,(vlSelf->rst));
-    bufp->chgIData(oldp+51,(vlSelf->a0),32);
-    bufp->chgIData(oldp+52,(vlSelf->ALUout),32);
-    bufp->chgIData(oldp+53,(vlSelf->simplecpu__DOT__PC),32);
-    bufp->chgIData(oldp+54,(vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
+    bufp->chgBit(oldp+50,(vlSelf->clk));
+    bufp->chgBit(oldp+51,(vlSelf->rst));
+    bufp->chgIData(oldp+52,(vlSelf->a0),32);
+    bufp->chgIData(oldp+53,(vlSelf->ALUout),32);
+    bufp->chgIData(oldp+54,(vlSelf->simplecpu__DOT__PC),32);
+    bufp->chgIData(oldp+55,(vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array
                             [(0x1fU & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                        >> 0x14U))]),32);
-    bufp->chgIData(oldp+55,(((1U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
+    bufp->chgIData(oldp+56,(((0x20U & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))
+                              ? ((((0x118U >= (0x1ffU 
+                                               & vlSelf->ALUout))
+                                    ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                   [(0x1ffU & vlSelf->ALUout)]
+                                    : 0U) << 0x18U) 
+                                 | ((((0x118U >= (0x1ffU 
+                                                  & ((IData)(1U) 
+                                                     + vlSelf->ALUout)))
+                                       ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                      [(0x1ffU & ((IData)(1U) 
+                                                  + vlSelf->ALUout))]
+                                       : 0U) << 0x10U) 
+                                    | ((((0x118U >= 
+                                          (0x1ffU & 
+                                           ((IData)(2U) 
+                                            + vlSelf->ALUout)))
+                                          ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                         [(0x1ffU & 
+                                           ((IData)(2U) 
+                                            + vlSelf->ALUout))]
+                                          : 0U) << 8U) 
+                                       | ((0x118U >= 
+                                           (0x1ffU 
+                                            & ((IData)(3U) 
+                                               + vlSelf->ALUout)))
+                                           ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                          [(0x1ffU 
+                                            & ((IData)(3U) 
+                                               + vlSelf->ALUout))]
+                                           : 0U))))
+                              : vlSelf->ALUout)),32);
+    bufp->chgIData(oldp+57,(((((0x118U >= (0x1ffU & vlSelf->ALUout))
+                                ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                               [(0x1ffU & vlSelf->ALUout)]
+                                : 0U) << 0x18U) | (
+                                                   (((0x118U 
+                                                      >= 
+                                                      (0x1ffU 
+                                                       & ((IData)(1U) 
+                                                          + vlSelf->ALUout)))
+                                                      ? 
+                                                     vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                                     [
+                                                     (0x1ffU 
+                                                      & ((IData)(1U) 
+                                                         + vlSelf->ALUout))]
+                                                      : 0U) 
+                                                    << 0x10U) 
+                                                   | ((((0x118U 
+                                                         >= 
+                                                         (0x1ffU 
+                                                          & ((IData)(2U) 
+                                                             + vlSelf->ALUout)))
+                                                         ? 
+                                                        vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                                        [
+                                                        (0x1ffU 
+                                                         & ((IData)(2U) 
+                                                            + vlSelf->ALUout))]
+                                                         : 0U) 
+                                                       << 8U) 
+                                                      | ((0x118U 
+                                                          >= 
+                                                          (0x1ffU 
+                                                           & ((IData)(3U) 
+                                                              + vlSelf->ALUout)))
+                                                          ? 
+                                                         vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                                                         [
+                                                         (0x1ffU 
+                                                          & ((IData)(3U) 
+                                                             + vlSelf->ALUout))]
+                                                          : 0U))))),32);
+    bufp->chgIData(oldp+58,(((1U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                                     & (~ (IData)(vlSelf->simplecpu__DOT__EQ))))
                               ? (vlSelf->simplecpu__DOT__PC 
                                  + vlSelf->simplecpu__DOT__ImmOp)
                               : ((IData)(4U) + vlSelf->simplecpu__DOT__PC))),32);
-    bufp->chgIData(oldp+56,(((IData)(4U) + vlSelf->simplecpu__DOT__PC)),32);
-    bufp->chgIData(oldp+57,((vlSelf->simplecpu__DOT__PC 
+    bufp->chgIData(oldp+59,(((IData)(4U) + vlSelf->simplecpu__DOT__PC)),32);
+    bufp->chgIData(oldp+60,((vlSelf->simplecpu__DOT__PC 
                              + vlSelf->simplecpu__DOT__ImmOp)),32);
 }
 

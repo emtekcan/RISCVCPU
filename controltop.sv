@@ -5,6 +5,7 @@ module controltop#(
 input [DATA_WIDTH-1:0] A,
 input logic EQ,
 
+
 output logic RegWrite,
 output logic [2:0] ALUctrl,
 output logic ALUsrc,
@@ -12,7 +13,8 @@ output logic PCsrc,
 output logic [ADDRESS_WIDTH-1:0] rs1,
 output logic [ADDRESS_WIDTH-1:0] rs2,
 output logic [ADDRESS_WIDTH-1:0] rd,
-output logic [DATA_WIDTH-1:0] ImmOp
+output logic [DATA_WIDTH-1:0] ImmOp,
+output logic Resultsrc
 );
 
 logic [DATA_WIDTH-1:0] RD_instr;
@@ -31,7 +33,8 @@ ctrlu controlunit(
 .ALUsrc(ALUsrc),
 .ImmSrc(ImmSrc),
 .PCsrc(PCsrc),
-.RegWrite(RegWrite)
+.RegWrite(RegWrite),
+.Resultsrc(Resultsrc)
 );
 
 extend signextend(
