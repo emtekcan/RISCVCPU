@@ -16,9 +16,9 @@ class Vsimplecpu___024root final : public VerilatedModule {
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
     CData/*0:0*/ simplecpu__DOT__EQ;
-    CData/*7:0*/ simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl;
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP__rst;
+    SData/*8:0*/ simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl;
     VL_OUT(a0,31,0);
     VL_OUT(ALUout,31,0);
     IData/*31:0*/ simplecpu__DOT__ImmOp;
@@ -27,8 +27,9 @@ class Vsimplecpu___024root final : public VerilatedModule {
     IData/*31:0*/ simplecpu__DOT__cu__DOT__RD_instr;
     IData/*31:0*/ simplecpu__DOT__alu__DOT__ALUop1;
     IData/*31:0*/ simplecpu__DOT__alu__DOT__ALUop2;
-    VlUnpacked<IData/*31:0*/, 64> simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array;
+    VlUnpacked<CData/*7:0*/, 901> simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array;
     VlUnpacked<IData/*31:0*/, 32> simplecpu__DOT__alu__DOT__regfile__DOT__rom_array;
+    VlUnpacked<IData/*31:0*/, 281> simplecpu__DOT__alu__DOT__datamem__DOT__rom_array;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

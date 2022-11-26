@@ -21,6 +21,7 @@ logic ALUsrc;
 logic [ADDRESS_WIDTH-1:0] rs1;
 logic [ADDRESS_WIDTH-1:0] rs2;
 logic [ADDRESS_WIDTH-1:0] rd;
+logic Resultsrc;
 
 pcreg pc(
     .clk(clk),
@@ -40,7 +41,8 @@ controltop cu(
     .rs1(rs1),
     .rs2(rs2),
     .rd(rd),
-    .ImmOp(ImmOp)
+    .ImmOp(ImmOp),
+    .Resultsrc(Resultsrc)
 );
 
 alutop alu(
@@ -54,8 +56,11 @@ alutop alu(
     .rs1(rs1),
     .rs2(rs2),
     .rd(rd),
-    .EQ(EQ)
+    .EQ(EQ),
+    .Resultsrc(Resultsrc)
 );
+
+
 
 
 

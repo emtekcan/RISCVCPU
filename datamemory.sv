@@ -1,29 +1,21 @@
-module datamemory#(
-parameter ADDRESS_WIDTH=5,
-DATA_WIDTH =32
-
-)(
-input logic clk,
-input logic [DATA_WIDTH-1:0] A,
+module datamemory(
+input logic [31:0] A,
 //input logic WE,
 //input logic [DATA_WIDTH] WD,
-output logic[DATA_WIDTH] RD
+output logic[31:0] data_RD
 );
-logic [DATA_WIDTH-1:0] rom_array [2**ADDRESS_WIDTH-1:0];
+
+logic [31:0] rom_array [4*70:0];
+
+initial begin
+    $readmemh("sinerom.mem", rom_array);
+end;
+
 //can take out WD3 enable in alutop/ 
 //always_comb for asynchronous logic
-always_comb
-    begin 
-         RD=rom_array[A];
-
-  end
-
-
-
+assign data_RD = rom_array[A];
 
 
 endmodule
-
-
 
 
