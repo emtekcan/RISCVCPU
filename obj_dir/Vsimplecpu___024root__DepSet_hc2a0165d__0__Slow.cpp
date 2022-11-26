@@ -26,7 +26,7 @@ VL_ATTR_COLD void Vsimplecpu___024root___initial__TOP__0(Vsimplecpu___024root* v
     __Vtemp_habaa847e__0[0U] = 0x2e6d656dU;
     __Vtemp_habaa847e__0[1U] = 0x65726f6dU;
     __Vtemp_habaa847e__0[2U] = 0x73696eU;
-    VL_READMEM_N(true, 8, 281, 0, VL_CVT_PACK_STR_NW(3, __Vtemp_habaa847e__0)
+    VL_READMEM_N(true, 32, 281, 0, VL_CVT_PACK_STR_NW(3, __Vtemp_habaa847e__0)
                  ,  &(vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array)
                  , 0, ~0ULL);
 }
@@ -213,7 +213,7 @@ VL_ATTR_COLD void Vsimplecpu___024root___ctor_var_reset(Vsimplecpu___024root* vl
         vlSelf->simplecpu__DOT__alu__DOT__regfile__DOT__rom_array[__Vi0] = VL_RAND_RESET_I(32);
     }
     for (int __Vi0=0; __Vi0<281; ++__Vi0) {
-        vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array[__Vi0] = VL_RAND_RESET_I(8);
+        vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array[__Vi0] = VL_RAND_RESET_I(32);
     }
     for (int __Vi0=0; __Vi0<3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);

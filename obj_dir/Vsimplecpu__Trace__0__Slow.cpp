@@ -254,68 +254,15 @@ VL_ATTR_COLD void Vsimplecpu___024root__trace_full_sub_0(Vsimplecpu___024root* v
                              [(0x1fU & (vlSelf->simplecpu__DOT__cu__DOT__RD_instr 
                                         >> 0x14U))]),32);
     bufp->fullIData(oldp+57,(((0x20U & (IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl))
-                               ? ((((0x118U >= (0x1ffU 
-                                                & vlSelf->ALUout))
-                                     ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                    [(0x1ffU & vlSelf->ALUout)]
-                                     : 0U) << 0x18U) 
-                                  | ((((0x118U >= (0x1ffU 
-                                                   & ((IData)(1U) 
-                                                      + vlSelf->ALUout)))
-                                        ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                       [(0x1ffU & ((IData)(1U) 
-                                                   + vlSelf->ALUout))]
-                                        : 0U) << 0x10U) 
-                                     | ((((0x118U >= 
-                                           (0x1ffU 
-                                            & ((IData)(2U) 
-                                               + vlSelf->ALUout)))
-                                           ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                          [(0x1ffU 
-                                            & ((IData)(2U) 
-                                               + vlSelf->ALUout))]
-                                           : 0U) << 8U) 
-                                        | ((0x118U 
-                                            >= (0x1ffU 
-                                                & ((IData)(3U) 
-                                                   + vlSelf->ALUout)))
-                                            ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                           [(0x1ffU 
-                                             & ((IData)(3U) 
-                                                + vlSelf->ALUout))]
-                                            : 0U))))
-                               : vlSelf->ALUout)),32);
-    bufp->fullIData(oldp+58,(((((0x118U >= (0x1ffU 
-                                            & vlSelf->ALUout))
-                                 ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                [(0x1ffU & vlSelf->ALUout)]
-                                 : 0U) << 0x18U) | 
-                              ((((0x118U >= (0x1ffU 
-                                             & ((IData)(1U) 
-                                                + vlSelf->ALUout)))
-                                  ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                 [(0x1ffU & ((IData)(1U) 
-                                             + vlSelf->ALUout))]
-                                  : 0U) << 0x10U) | 
-                               ((((0x118U >= (0x1ffU 
-                                              & ((IData)(2U) 
-                                                 + vlSelf->ALUout)))
+                               ? ((0x118U >= (0x1ffU 
+                                              & vlSelf->ALUout))
                                    ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                  [(0x1ffU & ((IData)(2U) 
-                                              + vlSelf->ALUout))]
-                                   : 0U) << 8U) | (
-                                                   (0x118U 
-                                                    >= 
-                                                    (0x1ffU 
-                                                     & ((IData)(3U) 
-                                                        + vlSelf->ALUout)))
-                                                    ? 
-                                                   vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
-                                                   [
-                                                   (0x1ffU 
-                                                    & ((IData)(3U) 
-                                                       + vlSelf->ALUout))]
-                                                    : 0U))))),32);
+                                  [(0x1ffU & vlSelf->ALUout)]
+                                   : 0U) : vlSelf->ALUout)),32);
+    bufp->fullIData(oldp+58,(((0x118U >= (0x1ffU & vlSelf->ALUout))
+                               ? vlSelf->simplecpu__DOT__alu__DOT__datamem__DOT__rom_array
+                              [(0x1ffU & vlSelf->ALUout)]
+                               : 0U)),32);
     bufp->fullIData(oldp+59,(((1U & ((IData)(vlSelf->simplecpu__DOT__cu__DOT__controlunit__DOT__ctrl) 
                                      & (~ (IData)(vlSelf->simplecpu__DOT__EQ))))
                                ? (vlSelf->simplecpu__DOT__PC 

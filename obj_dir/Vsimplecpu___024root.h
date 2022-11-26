@@ -29,7 +29,7 @@ class Vsimplecpu___024root final : public VerilatedModule {
     IData/*31:0*/ simplecpu__DOT__alu__DOT__ALUop2;
     VlUnpacked<CData/*7:0*/, 901> simplecpu__DOT__cu__DOT__instructionmemory__DOT__rom_array;
     VlUnpacked<IData/*31:0*/, 32> simplecpu__DOT__alu__DOT__regfile__DOT__rom_array;
-    VlUnpacked<CData/*7:0*/, 281> simplecpu__DOT__alu__DOT__datamem__DOT__rom_array;
+    VlUnpacked<IData/*31:0*/, 281> simplecpu__DOT__alu__DOT__datamem__DOT__rom_array;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
