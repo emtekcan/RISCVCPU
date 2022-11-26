@@ -7,6 +7,6 @@ input logic Resultsrc,
 output logic[DATA_WIDTH-1:0] Result
 );
 
-assign Result=Resultsrc?data_RD:ALUout;
+assign Result = Resultsrc ? data_RD : ALUout;
 
 endmodule

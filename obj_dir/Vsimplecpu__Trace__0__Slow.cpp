@@ -52,7 +52,7 @@ VL_ATTR_COLD void Vsimplecpu___024root__trace_init_sub__TOP__0(Vsimplecpu___024r
     tracep->declBus(c+56,"regOp2", false,-1, 31,0);
     tracep->declBus(c+44,"ALUop2", false,-1, 31,0);
     tracep->declBus(c+57,"WD3", false,-1, 31,0);
-    tracep->declBus(c+58,"ReadData", false,-1, 31,0);
+    tracep->declBus(c+58,"data_RD", false,-1, 31,0);
     tracep->pushNamePrefix("SelectSignal ");
     tracep->declBus(c+63,"DATA_WIDTH", false,-1, 31,0);
     tracep->declBus(c+56,"regOp2", false,-1, 31,0);

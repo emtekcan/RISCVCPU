@@ -24,29 +24,27 @@ assign rs1 = RD_instr[19:15];
 assign rs2 = RD_instr[24:20];
 assign rd = RD_instr[11:7];
 
+rom instructionmemory(
+.A(A),
+.RD(RD_instr)
+);
+
 ctrlu controlunit(
 .EQ(EQ), //after dot is the internal signal and in the brackets external
 .op(RD_instr[6:0]),
 .funct3(RD_instr[14:12]),
-
+.Resultsrc(Resultsrc),
 .ALUctrl(ALUctrl),
 .ALUsrc(ALUsrc),
 .ImmSrc(ImmSrc),
 .PCsrc(PCsrc),
-.RegWrite(RegWrite),
-.Resultsrc(Resultsrc)
+.RegWrite(RegWrite)
 );
 
 extend signextend(
 .ImmSrc(ImmSrc),
 .ImmOp(ImmOp),
 .Instr(RD_instr[31:0])
-);
-
-rom instructionmemory(
-.A(A),
-
-.RD(RD_instr)
 );
 
 

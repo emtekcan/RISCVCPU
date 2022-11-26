@@ -21,7 +21,7 @@ logic[DATA_WIDTH-1:0] ALUop1;
 logic[DATA_WIDTH-1:0] regOp2;
 logic[DATA_WIDTH-1:0] ALUop2;
 logic[DATA_WIDTH-1:0] WD3;
-logic[DATA_WIDTH-1:0] ReadData;
+logic[DATA_WIDTH-1:0] data_RD;
 
 alu alulogic(
     .ALUop1(ALUop1),
@@ -54,15 +54,15 @@ sreg regfile(
 
 datamemory datamem(
     .A(ALUout),
-    .data_RD(ReadData)
+    .data_RD(data_RD)
 
 );
 
 resultsrc resmux(
+    .Resultsrc(Resultsrc),
     .ALUout(ALUout),
-    .data_RD(ReadData),
-    .Result(WD3),
-    .Resultsrc(Resultsrc)
+    .data_RD(data_RD),
+    .Result(WD3)
 );
 
 endmodule
