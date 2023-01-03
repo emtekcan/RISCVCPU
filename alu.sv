@@ -22,7 +22,9 @@ always_comb //always comb //case add aluctrl
     default: ALUout = 0; //what should default case
     endcase
 
+ 
 
 endmodule 
+
 
 
